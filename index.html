@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<!-- === Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZAK apple store</title>
+        
+    <!-- ===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+
+
+     <!--  bootstrap link -->
+
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+ <!--  fontawesome link -->
+ 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+ <!-- fontawesome w3-->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+ <!--  css link -->
+
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.4s ease;
+
+}
+
+body{
+        background-color:white;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+:root{
+    --body-color: white;
+    --nav-color: black;
+    --side-nav: #010718;
+    --text-color: #fff;
+    --search-bar: #F2F2F2;
+    --search-text: #010718;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    background-color: var(--nav-color);
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+
+}
+
+body.dark nav{
+    border: 1px solid #393838;
+
+}
+
+nav .nav-bar{
+    position: relative;
+    height: 100%;
+    max-width: 1000px;
+    width: 100%;
+    background-color: var(--nav-color);
+    margin: 0 auto;
+    padding: 0 1px;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .nav-bar .sidebarOpen{
+    color: var(--text-color);
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+nav .nav-bar .logo a{
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+    width:22px;
+}
+
+.menu .logo-toggle{
+    display: none;
+}
+
+.nav-bar .nav-links{
+    display: flex;
+    align-items: center;
+   
+}
+.vedios{
+
+
+}
+.nav-bar .nav-links li{
+    margin: 0 5px;
+    list-style: none;
+    margin-bottom:20px;
+    
+}
+
+.nav-links li a{
+    position: relative;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px;
+    
+}
+.nav-links li a:hover{
+    color: darkorange;
+    border-bottom: 1px solid yellow;
+
+
+}
+.nav-links li a::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 6px;
+    width: 6px;
+    border-radius: 5%;
+    background-color:var(--text-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-links li:hover a::before{
+    opacity: 0;
+}
+
+.nav-bar .darkLight-searchBox{
+    display: flex;
+    align-items: center;
+}
+
+.darkLight-searchBox .dark-light,
+.darkLight-searchBox .searchToggle{
+    height: 45px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0 1px;
+}
+
+.dark-light i,
+.searchToggle i{
+    position: absolute;
+    color: var(--text-color);
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-light i.sun{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dark-light.active i.sun{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dark-light.active i.moon{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle i.cancel{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle.active i.cancel{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchToggle.active i.search{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchBox{
+    position: relative;
+}
+
+.searchBox .search-field{
+    position: absolute;
+    bottom: -85px;
+    right: 5px;
+    height: 27px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    background-color:var(--nav-color);
+    padding: 1px;
+    border-radius: 50px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.searchToggle.active ~ .search-field{
+    bottom: -55px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-field::before{
+    content: '';
+    position: absolute;
+    right: 22px;
+    top: -4px;
+    height: 12px;
+    width: 12px;
+    /*background-color: var(--nav-color);*/
+    background-color: black;
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+
+.search-field input{
+    height: 100%;
+    width: 100%;
+    padding: 0 45px 0 15px;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--search-text);
+    background-color: var(--search-bar);
+}
+
+
+
+.search-field i{
+    position: absolute;
+    color: var(--nav-color);
+    right: 4px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+.bx .bx-search i{
+    color:black; 
+}
+.logo1{
+    width:12px;
+}
+.cart{
+    color: #fff;
+    font-size: 22px;
+    padding-top: 1px;
+    padding-right: 1px;
+}
+.user i{
+    font-size:22px;
+    color:white;
+}
+
+@media (max-width: 790px) {
+    nav .nav-bar .sidebarOpen{
+        display: block;
+    }
+
+    .menu{
+        position: fixed;
+        height: 100%;
+        width: 200px;
+        left: -100%;
+        top: 0;
+        padding: 10px;
+        background-color:black;
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+
+    nav.active .menu{
+        left: -0%;
+    }
+
+    nav.active .nav-bar .navLogo a{
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .menu .logo-toggle{
+        display: block;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-toggle .siderbarClose{
+        color: var(--text-color);
+        font-size: 26px;
+        cursor: pointer;
+        color:white;
+        margin-top:20px;
+    }
+
+    .nav-bar .nav-links{
+        flex-direction: column;
+        padding-top:0;
+        align-items:self-start;
+        padding-left:20px;
+        
+    }
+
+    .nav-links li a{
+        display:inline;
+        margin-top: 2px;
+        padding-right:150px;
+        
+
+        
+    }
+
+  
+   
+}
+   /*<---------wishlist ,cart , userlogin ,search css ------------->*/
+
+    /*--------------- wishlist CSS---------------*/
+
+    .sub-menu-wrap{
+        position: absolute;
+        top:80%;
+        left:-0.5rem;
+        width:310px;
+        height:auto;
+        max-height:0px;
+        overflow:hidden;
+        transition: max-height 0.5s;
+        margin-top:0.8rem;
+    }
+
+    .sub-menu-wrap.open-menu{
+        max-height:400px;
+    }
+
+    .sub-menu{
+        background:black;
+        padding:1rem;
+        margin:10px;
+
+    }
+
+    .sub-menu hr{
+        border:0;
+        height:0.2rem;
+        width:100%;
+        background:white;
+        margin:15px 0 10px;
+    }
+
+    .sub-menu-link{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    color:black;
+    margin:1px 0;
+    }
+
+    .sub-menu-link p{
+    width:100%;
+    font-size:1.3rem;
+    color:black;
+    text-decoration:none;
+
+    }   
+
+    .sub-menu-link p:hover{
+    font-weight:600;
+    color:darkorange;
+    }
+
+    .sub-menu-link img{
+    width: 1.3rem;
+    background:black;
+    border-radius:50%;
+    padding:1px;
+    margin-right:15px;
+    }
+
+    .sub-menu-link span{
+    font-size:22px;
+    transition:transform 0.5s;
+    color:white;
+
+    }
+    .sub-menu-link span{
+    font-size:22px;
+    transition:transform 0.5s;
+    color:white;
+
+    }
+    .sub-menu-link:hover span{
+    transform: translateX(5px);
+    color:darkorange;
+
+    }
+
+    /**---------------------Shopping cart css-------------------------- */
+    .cart-menu-wrap{
+        position: absolute;
+        top:80%;
+        left:-0.5rem;
+        width:310px;
+        max-height:0px;
+        overflow:hidden;
+        transition: max-height 0.5s;
+        margin-top:0.8rem;
+
+    }
+   
+    .cart-menu-wrap.open-sub{
+        max-height:400px;
+
+    }
+   
+    
+    .cart-menu{
+        background:black;
+        padding:1rem;
+        margin:10px;
+
+    }
+
+    .cart-menu hr{
+        border:0;
+        height:0.2rem;
+        width:100%;
+        background:white;
+        margin:15px 0 10px;
+    }
+    
+
+
+    .cart-menu-link{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+    margin:1px 0;
+    }
+
+    .cart-menu-link p {
+    width:100%;
+    font-size:1.3rem;
+    color:white;
+
+
+    }
+
+    .cart-menu-link p:hover{
+    font-weight:600;
+    color:darkorange;
+    }
+
+    .cart-menu-link img{
+    width: 1.3rem;
+    background:black;
+    border-radius:50%;
+    padding:1px;
+    margin-right:15px;
+    }
+
+    .cart-menu-link span{
+    font-size:22px;
+    transition:transform 0.5s;
+    color:white;
+    }
+
+    .cart-menu-link:hover span{
+    transform: translateX(5px);
+    color:darkorange;
+    }
+
+    /** */
+    .user-info{
+        display: flex;
+        align-items:center;
+
+    }
+    .user-info h2{
+        font-size:1rem;
+        font-weight:500;
+        color:white;
+    }
+
+        /**---------------------------------useraccount css-------------------------------------------- */
+
+	.login-menu-wrap{
+        position: absolute;
+        top:80%;
+        left:-0.5rem;
+        width:310px;
+        max-height:0px;
+        overflow:hidden;
+        transition: max-height 0.5s;
+        margin-top:0.8rem;
+
+    }
+   
+    .login-menu-wrap.open-login{
+        max-height:400px;
+
+    }
+   
+    
+    .login-menu{
+        background:black;
+        padding:1rem;
+        margin:10px;
+		height:120px;
+
+    }
+	
+    .login-menu hr{
+        border:0;
+        height:0.2rem;
+        width:100%;
+        background:white;
+        margin:15px 0 10px;
+    }
+    
+
+
+    .login-menu-link{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+    margin:1px 0;
+    }
+
+    .login-menu-link p {
+    width:100%;
+    font-size:1.3rem;
+    color:white;
+
+
+    }
+
+    .login-menu-link p:hover{
+    font-weight:600;
+    color:darkorange;
+    }
+
+    .login-menu-link img{
+    width: 1.3rem;
+    background:black;
+    border-radius:50%;
+    padding:1px;
+    margin-right:15px;
+    }
+
+    .login-menu-link span{
+    font-size:22px;
+    transition:transform 0.5s;
+    color:white;
+    }
+
+    .login-menu-link:hover span{
+    transform: translateX(5px);
+    color:darkorange;
+    }
+
+    
+    
+    /**---------------------------------  user pick css----------------------------------------- */
+    .user-pic{
+    width:1.5rem;
+    align-items:center;
+    }
+
+    /**---------------------------------  cart pick css----------------------------------------- */
+
+    .cart-pic{
+    width:1.5rem;
+    align-items:center;
+    }
+    /**---------------------------------  pagination link css----------------------------------------- */
+
+    
+@media (max-width: 768px) {
+    nav .nav-bar .sidebarOpen{
+        display: block;
+    }
+
+    .menu{
+        position: fixed;
+        height: 100%;
+        width: 200px;
+        left: -100%;
+        top: 0;
+        padding: 10px;
+        background-color:black;
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+
+    nav.active .menu{
+        left: -0%;
+    }
+
+    nav.active .nav-bar .navLogo a{
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .menu .logo-toggle{
+        display: block;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-toggle .siderbarClose{
+        color: var(--text-color);
+        font-size: 26px;
+        cursor: pointer;
+        color:white;
+        margin-top:20px;
+    }
+
+    .nav-bar .nav-links{
+        flex-direction: column;
+        padding-top:0;
+        align-items:self-start;
+        padding-left:20px;
+        
+    }
+
+    .nav-links li a{
+        display:inline;
+        margin-top: 2px;
+        padding-right:150px;
+        
+
+        
+    }
+
+  
+   
+}
+.logo{
+    width:100%;
+   
+}
+.logo1{
+    width:12px;
+    
+}
+.logo2{
+    width:30px;
+}
+ /**--------------------------------------footer section css---------------------------------------------------- */
+
+
+
+ footer{
+    background-color:black;
+    
+    }
+    footer h5{
+  
+    color: darkorange;
+    font-weight: 700;
+    font-size: 20px;
+    }
+    footer ul li a{
+	font-size:16px;
+	text-transform:capitalize;
+	color:#ffffff;
+	text-decoration:none;
+	font-weight:300;
+	color:#bbbbbb;
+	display:block;
+	transition:all 0.3s ease;
+    }
+    footer ul li a:hover{
+    color:#ffffff;
+    padding-left:5px;
+    }
+    footer li{
+    color: white ;
+    }
+
+    footer li a:hover{
+
+    padding-left: 10px;
+    }
+    footer p{
+    font-size:15px;
+	color:white;
+	align-items:center;
+	 
+    }
+    hr{
+    color: white;
+    
+    }
+    footer h1{
+    font-size:13px;
+	color:white;
+   padding-left:17px;
+    }
+    footer h6{
+    font-size:10px;
+	color:white;
+    }
+    footer .social a{
+    display:inline-block;
+	height:40px;
+	width:40px;
+	background-color:darkorange;
+	margin:4px;
+	text-align:center;
+	padding:10px;
+	border-radius:500%;
+	color:#ffffff;
+	transition:all 0.5s ease;
+	cursor:pointer;
+    }
+    footer .social a:hover{
+    color:#24262b;
+    background-color:#ffffff;
+    padding-left:15px;
+    }
+
+    
+    /**---------------------------------  zak apple store presenting  css----------------------------------------- */
+
+    .product{
+	height:200px;
+	margin:0px;
+	position:relative;
+	width:100%;
+	display:grid;
+	overflow:hidden;
+	place-items:center;
+	
+
+    }
+    p{
+	font-size:35px;
+	color:black;
+	font-family:italic;
+	padding-left:20px;
+	padding-top:10px;
+    }
+    .slide-product{
+	display:flex;
+	width:calc(250px *18);
+	animation:scroll 20s linear infinite;
+    }
+    @keyframes scroll{
+	0%{ 
+	transform:translateX(0);
+	}
+	100%{
+		transform:translateX(calc(-250px*9));
+	}
+    }
+	
+    .slide-image{
+
+	width:500px;
+	display:flex;
+	align-items:center;
+	padding:10px;
+	perspective:100px;
+	box-shadow:2px 2px 2px  #808080;
+
+	
+    }
+
+    img  {
+	width:100%;
+	
+	transition:transform 1s;
+    }
+
+
+    #feature{
+        margin-bottom: 1rem;
+    }
+    #feature .fe-box1{
+        width:95px;
+        text-align:center;
+        padding:0.1rem 0.1rem;
+        box-shadow:0.1rem 0.1rem 0.1rem grey;
+        border:0.1rem solid black;
+        border-radius:4px;
+        margin:0 0;
+        
+    }
+    
+    #feature .fe-box1:hover{
+        box-shadow:10px 10px 54px rgba(70,62,221,0.1);
+    }
+    #feature .fe-box1 h6{
+        display:inline-block;
+        padding:5px 4px 3px 4px;
+        font-size:14px;
+        line-height:1;
+        border-radius:4px;
+        color:white;
+        background-color:black;
+    
+    }
+    #feature .fe-box1 h2{
+        font-size:1rem;
+        padding:1rem;
+        line-height:1;
+        color:black;
+        font-family:italic;
+    }
+
+    @media (max-width: 790px) {
+        #feature .fe-box1{
+            height:5rem;
+            
+        }
+        #feature .fe-box1 h6{
+            font-size:0.5rem;
+            display:content;
+        }
+        #feature .fe-box1 h2{
+        font-size:0.5rem;
+        padding:0.1rem;
+        padding-bottom:-4rem;
+    }
+
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <div class="nav-bar vissible-sm">
+            
+            <div class="darkLight-searchBox">
+                <div class="cart">
+                    <i class="fa fa-user-circle-o" style="font-size:24px" onclick="toggleMenu2()">
+                        <div class="login-menu-wrap" id="logIn">
+                         <div class="login-menu ">
+                             <div class="user-info">
+                                 <h2> My Account</h2>
+                             </div><hr>
+                             
+                             <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
+                                 <div class="header__right">
+                                     <div class="header__account">
+                                        <a style="text-decoration: none; color: white;"href="profile.php">Profile</a>
+                                     </div>
+                                     
+
+                                     
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </i>
+                </div>
+                <div class="dark-light">
+                    <i class="fa fa-shopping-cart" style="font-size:24px" onclick="toggleMenu1()">
+                        <div class="cart-menu-wrap" id="cartMenu">
+                            <div class="cart-menu ">
+                                <div class="user-info">
+                                    <h2>My cart</h2>
+                                </div><hr>
+
+                                <a href="" class="cart-menu-link">
+                                    <img src="image/bag.png" alt=""><p>My Cart</p>
+                                    <span>*</span>
+                                </a>
+
+                                <a href="" class="cart-menu-link">
+                                    <img src="image/bag.png" alt=""><p>My Order</p>
+                                    <span>*</span>
+                                </a>
+                            </div>
+                        </div>
+                    </i>
+                </div>
+
+                
+            </div>
+            
+            <div class="ved">
+                <video  height="100vh" width="100%" loop  muted autoplay="autoplay">
+                  <source src="image/Apple 2.m4v" type="video/mp4">
+                </video>
+              </div>
+              <i class='bx bx-menu sidebarOpen' ></i>
+            <div class="menu">
+                <div class="logo-toggle">
+                    <span class="logo"><a href="#">ZAK APPLE STORE <img class="logo1" src="image/whiteapple.png"> </a></span>
+                    <i class='bx bx-x siderbarClose'></i>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Service</a></li>
+                    <li><a href="#">Aboutus</a></li>
+                    <li><a href="#">Contactus</a></li>
+                    <li><a href="#">Store</a></li>
+              
+                    
+
+                </ul>
+            </div>
+            <div class="darkLight-searchBox">
+                
+
+                <div class="searchBox">
+                   <div class="searchToggle">
+                    <i class='bx bx-x cancel'></i>
+                    <i class='bx bx-search search'></i>
+                   </div>
+
+                    <div class="search-field">
+                        <input type="text" placeholder="Search Here...">
+                        <i class='bx bx-search'></i>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </nav>
+
+
+   <!-- <header class="vissible-lg">
+        <nav class="navbar navbar-expand-lg navbar-primary bg-black py-0 mb-5 fixed-top">
+            <div class="container-fluid">
+               
+            <div class="col-3">
+               <form class="d-flex">
+                  <i class="fa fa-heart" style="font-size:24px;color:red" onclick="toggleMenu()">
+                  <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu ">
+                    <div class="user-info">
+                        <h2>My Wishlist</h2>
+                    </div><hr>
+                    <h5 style="color:white;font-size:1rem">IPhone14 256gb</h5>
+<h5 style="color:white;font-size:1rem">IPhone14 Pro 512gb</h5> 
+                    <a href="login.php" class="sub-menu-link">
+                        <img src="image/login.png" alt=""><p>login</p>
+                        <span><</span>
+                    </a>
+                    <a href="" class="sub-menu-link">
+                        <img src="image/user.png" alt=""><p>My Profile</p>
+                        <span><</span>
+
+                    </a>
+                    <a href="" class="sub-menu-link">
+                        <img src="image/bag.png" alt=""><p>My Order</p>
+                        <span><</span>
+
+                    </a>
+                    <a href="" class="sub-menu-link">
+                        <img src="image/heart.png" alt=""><p>My wishlist</p>
+                        <span><</span>
+
+                    </a>
+                    <a href="" class="sub-menu-link">
+                        <img src="image/logout.png" alt=""><p>Logout</p>
+                        <span><</span>
+
+                    </a>-->
+               <!--</div>
+            </div></i>
+    <a href="login.php"><i class="fa fa-user-circle-o" style="font-size:24px "></i></a>
+    <i class="fa fa-shopping-cart" style="font-size:24px" onclick="toggleMenu1()">
+    <div class="cart-menu-wrap" id="cartMenu">
+                <div class="cart-menu ">
+                    <div class="user-info">
+                        <h2>My cart</h2>
+                    </div><hr>
+                    
+                    <a href="cart.php" class="cart-menu-link">
+                    <img src="image/bag.png" alt=""><p>My Cart</p>
+                        <span><</span>
+                    </a>
+                    <a href="my_order.php" class="cart-menu-link">
+                    <img src="image/bag.png" alt=""><p>My Order</p>
+                        <span><</span>
+
+                    </a>
+                </div>
+            </div>
+</i>
+                      <nav class="nav">  
+                        <i class="uil uil-search search-icon" id="searchIcon"></i>
+                            <div class="search-box">
+                                <i class="uil uil-search search-icon"></i>
+                                <input type="text" placeholder="search here...."/>
+                            </div> 
+                        <i class="uil uil-bars navOpenBtn"></i>
+                      </nav>
+
+                </form>
+                
+            </div>
+
+              <div class="col-5 col-lg-4 col-md-5 ">
+                <video  height="100vh" width="100%" loop  muted autoplay="autoplay">
+                  <source src="image/Apple 2.m4v" type="video/mp4">
+                </video>
+              </div>
+            <div class="mobile-toggler d-lg-none">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#navbModal">
+                  <i class="fa-solid fa-bars"></i>
+              </a>
+          </div>
+               
+               
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+               
+                  <ul class="navbar-nav mx-auto mb-2 " id="myul">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    </li>
+                   
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        shop
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="iphone.php">iphone</a></li>
+                          <li><a class="dropdown-item" href="ipad.php">ipad</a></li>
+                           <li><a class="dropdown-item" href="mac.php">mac</a></li>
+                          <li><a class="dropdown-item" href="accessories.php">accessories</a></li>
+                          <li><a class="dropdown-item" href="watches.php">watches</a></li>
+                          <li><a class="dropdown-item" href="airpods.php">airpods</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " aria-current="page" href="service.php">Service</a>
+                    </li>
+                      <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="aboutus.php">About us</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="contactus.php">Contact us</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="store.php">Store</a>
+                      </li>
+                      
+                  </ul>   
+                </div>
+            </div>
+            </div>
+          </nav>
+        
+    </header>-->
+  
+<section>
+    <div class="vedio">
+      
+    <video    width="100%" loop muted autoplay="autoplay">
+      <source src="image/haa.mp4" type="video/mp4">
+    </video>
+</section> 
+
+<!-- vedio section start-->
+
+
+<!--zak presenting  section start-->
+
+<section>
+    
+    <p>ZAK STORE Presenting</p><br>
+        <div class="product" >
+        <div class="container">
+          <div class="slide-product">
+            <div class="slide-image">
+              <a href="iphone.html" target="_blank"><img src="image/a.png" alt=""></a>
+            </div>
+            
+            <div class="slide-image">
+              <a href="mac.html" target="_blank"><img src="image/h.png" alt=""></a>
+            </div>
+            
+            <div class="slide-image">
+              <a href="watch.html" target="_blank"><img src="image/w.png" alt=""></a>
+            </div>
+            
+            <div class="slide-image">
+              <a href="airpod.html" target="_blank"><img src="image/p.png" alt=""></a>
+            </div>
+            
+            <div class="slide-image">
+              <a href="accessories.html" target="_blank"><img src="image/ac.png" alt=""></a>
+            </div>
+            
+            <div class="slide-image">
+              <a href="iphone.html" target="_blank"><img src="image/a.png" alt=""></a>
+            </div>
+            
+            <div class="slide-image">
+              <a href="mac.html" target="_blank"><img src="image/h.png"alt=""></a>
+            </div>
+            
+            <div class="slide-image">
+              <a href="watch.html" target="_blank"><img src="image/w.png" alt=""></a>
+            </div>
+            
+            <div class="slide-image">
+              <a href="airpod.html" target="_blank"><img src="image/p.png" alt=""></a>
+            </div>
+            
+            <div class="slide-image">
+              <a href="accessories.html" target="_blank"><img src="image/ac.png" alt=""></a>
+            </div>
+          </div>
+          </div>
+</section>
+
+<!--zak presenting  section end-->
+<!-- feature section -->
+<section id="feature">
+    <div class="container-fluid  py-4 mb-1">
+      <div class="row">
+      
+        <div class="col  fe-box1 ms-3">
+          <img class="img-fluid" src="image/free.JPG" alt=""><br>
+          
+          <h2 class="text-center py-2 mt-4 ">Free Shipping</h2>
+  
+        </div>
+        
+        <div class="col  fe-box1 ms-2">
+          <img class="img-fluid" src="image/f21.png" alt=""><br>
+          
+          <h2 class="text-center py-2 mt-1 ">Ontime Delivery</h2>
+  
+        </div>
+        <div class="col  fe-box1 ms-2">
+          <img class="img-fluid" src="image/f3.png" alt=""><br>
+          
+          <h2 class="text-center py-2 mt-3">Save Money</h2>
+  
+        </div>
+        <div class="col  fe-box1 ms-2">
+          <img class="img-fluid" src="image/f4.png" alt=""><br>
+          
+          <h2 class="text-center py-2 mt-3 ">Every Day Happy Sale</h2>
+  
+        </div>
+        <div class="col  fe-box1 ms-2 me-3">
+          <img class="img-fluid" src="image/service2.JPG" alt=""><br>
+          
+          <h2 class="text-center py-2 mt-2 ">4/7 Service</h2>
+  
+        </div>
+      </div>
+    </div>
+  </section>
+       
+   
+<!--footer section -->
+<footer class=" pt-2 pb-4 mt-5">
+    <div class="container text-center text-md-right">
+        <div class="row text-center text-md-left">
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold text-start ">Information</h5>
+            
+                          <ul class="list-unstyled">
+                                <li class="text-start"><a href="store.php">stores</a></li>
+                                <li class="text-start"><a href="service.php">service centers</a></li>
+                                <li class="text-start"><a href="aboutus.php">about us</a></li>
+                                <li class="text-start"><a href="contactus.php">contact us</a></li>
+                          </ul>
+          </div>
+        <div class="col-md-2 col-lg-2 col-xl-2  mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold text-start">Shop</h5>
+            <ul class="list-unstyled">
+              <li class="text-start"><a href="iphone.php">iphone</a></li>
+                <li class="text-start"><a href="mac.php">mac</a></li>
+                <li class="text-start"><a href="ipad.php">ipad</a></li>
+                <li class="text-start"><a href="watch.php">watch</a></li>
+                <li class="text-start"><a href="accessories.php">accessories</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-2 col-lg-2 col-xl-2  mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold  text-start">Policies</h5>
+          <ul class="list-unstyled">
+            
+            <li class="text-start"><a href="privacy.php">privacy and policies</a></li>
+            <li class="text-start"><a href="terms.php">terms and conditions</a></li>
+            <li class="text-start"><a href="shipping.php">shipping and delivery</a></li>
+            <li class="text-start"><a href="booking.php">booking terms and conditions</a></li>
+            <li class="text-start"><a href="cancel.php">Cancellation,Return and Refund</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-lg-3 col-xl-3  mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-start ">Shop</h5>
+        <ul class="list-unstyled">
+          <li class="text-start">
+            <i class="fa-solid fa-phone "></i><a href="#">7779992886</a>
+           
+               <i class="fa-solid fa-envelope"></i><a href="#">zakapplestoreindia@gmail.com</a><br>
+             <i class="fa-solid fa-location-dot"></i> INDIA<br>
+ASSAM<br>
+GUWAHATI<br>
+BARPETA-city<br>
+BK Rd,Muslimpatty<br>
+pin-:781301
+</li>      
+<div class="social">
+<h5>Follow us</h5>
+  <a href=""><i class="fab fa-facebook-f"></i></a>
+  <a href="https://twitter.com/@zakapplestore11"><i class="fab fa-twitter"></i></a>
+  <a href="https://instagram.com/zak_apple_store"><i class="fab fa-instagram"></i></a>
+</div>
+</ul>          
+      </ul>
+    </div>
+
+        </div>
+<hr>
+        <div class="mb-2">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-4">
+            <h6>Designed by <br>Zadidul Ahmed</h6>
+             
+            </div>
+
+            <div class="col-lg-4">
+              <h6>copyright 2023 <span> ZAK APPLE STORE </span> All rights reserved</h6>
+             
+            </div>
+
+            <div class="col-lg-4">
+            <h6>Developed by <br>Reshma Mohammad</h6>
+             
+            </div>
+
+          </div>
+         </div>
+
+        
+    </div>
+
+  </footer>
+
+<script>
+
+const body = document.querySelector("body"),
+      nav = document.querySelector("nav"),
+      modeToggle = document.querySelector(".dark-light"),
+      searchToggle = document.querySelector(".searchToggle"),
+      sidebarOpen = document.querySelector(".sidebarOpen"),
+      siderbarClose = document.querySelector(".siderbarClose");
+
+      let getMode = localStorage.getItem("mode");
+          if(getMode && getMode === "dark-mode"){
+            body.classList.add("dark");
+          }
+
+
+
+// js code to toggle search box
+        searchToggle.addEventListener("click" , () =>{
+        searchToggle.classList.toggle("active");
+      });
+ 
+      
+//   js code to toggle sidebar
+sidebarOpen.addEventListener("click" , () =>{
+    nav.classList.add("active");
+});
+
+body.addEventListener("click" , e =>{
+    let clickedElm = e.target;
+
+    if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
+        nav.classList.remove("active");
+    }
+});
+
+
+
+</script>
+<script>
+    let subMenu = document.getElementById("subMenu");
+
+    function toggleMenu(){
+        subMenu.classList.toggle("open-menu");
+    }
+
+</script>
+<script>
+    let cartMenu = document.getElementById("cartMenu");
+
+    function toggleMenu1(){
+        cartMenu.classList.toggle("open-sub");
+    }
+
+</script>
+<script>
+    let logIn = document.getElementById("logIn");
+
+    function toggleMenu2(){
+        logIn.classList.toggle("open-login");
+    }
+
+</script> 
+</body>
+</html>
